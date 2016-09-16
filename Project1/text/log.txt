@@ -1,0 +1,17 @@
+--- System ---
+OS		Microsoft Windows XP Home Edition (5.1, ƒrƒ‹ƒh 2600)
+CPU:		Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz (2 CPUs)
+SysMemory:	3584MB RAM
+DirectX:		DirectX 9.0c (4.09.0000.0904)
+DirectXMode:	DebugRuntime
+--- Display adaptor 0 ---
+Chip:		GeForce 9600 GT
+VRAM:		512.0 MB
+DDI:		9 (or higher)
+DirectDraw:	OK
+Direct3D:	OK
+AGP:		OK
+VertexShaderVer:	3.0
+PixelShaderVer:	3.0
+VertexShaderVer:-130304
+PixelShaderVer:-64768

@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{24EF3028-37F7-4843-8940-B6D23431737E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Project1</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FloatingPointModel>Precise</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ActiveEnemy.cpp" />
+    <ClCompile Include="CFontTex.cpp" />
+    <ClCompile Include="CItem.cpp" />
+    <ClCompile Include="CModel.cpp" />
+    <ClCompile Include="CObjFVF.cpp" />
+    <ClCompile Include="CObjMesh.cpp" />
+    <ClCompile Include="CObjParticl.cpp" />
+    <ClCompile Include="CObjSound.cpp" />
+    <ClCompile Include="CObjSurf.cpp" />
+    <ClCompile Include="CObjText.cpp" />
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="CLoadSound.cpp" />
+    <ClCompile Include="CollObj.cpp" />
+    <ClCompile Include="CollParfect.cpp" />
+    <ClCompile Include="CSaveLoad.cpp" />
+    <ClCompile Include="CSound.cpp" />
+    <ClCompile Include="CString.cpp" />
+    <ClCompile Include="CSurface.cpp" />
+    <ClCompile Include="CSurTex.cpp" />
+    <ClCompile Include="DebugButton.cpp" />
+    <ClCompile Include="DirectInput.cpp" />
+    <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Event.cpp" />
+    <ClCompile Include="EventCam.cpp" />
+    <ClCompile Include="EventObj.cpp" />
+    <ClCompile Include="Ev_201.cpp" />
+    <ClCompile Include="Ev_202.cpp" />
+    <ClCompile Include="Ev_203.cpp" />
+    <ClCompile Include="Ev_Bath_Datui_Woman.cpp" />
+    <ClCompile Include="Ev_Bath_Room_Man.cpp" />
+    <ClCompile Include="Ev_Bath_Room_Woman.cpp" />
+    <ClCompile Include="Ev_Dining_Room.cpp" />
+    <ClCompile Include="Ev_F31.cpp" />
+    <ClCompile Include="Ev_F32.cpp" />
+    <ClCompile Include="Ev_Lobby.cpp" />
+    <ClCompile Include="Ev_Lobby1.cpp" />
+    <ClCompile Include="Ev_Roof_Top.cpp" />
+    <ClCompile Include="Ev_Sandou.cpp" />
+    <ClCompile Include="Ev_SecretRoom.cpp" />
+    <ClCompile Include="Ev_Secret_Door.cpp" />
+    <ClCompile Include="Ev_Soto.cpp" />
+    <ClCompile Include="Ev_Soto1.cpp" />
+    <ClCompile Include="Ev_Soto2.cpp" />
+    <ClCompile Include="Ev_Staff_Room.cpp" />
+    <ClCompile Include="Ev_Title.cpp" />
+    <ClCompile Include="Ev_F3.cpp" />
+    <ClCompile Include="Ev_GameOver.cpp" />
+    <ClCompile Include="Ev_Guest_Room.cpp" />
+    <ClCompile Include="Ev_FirstStage.cpp" />
+    <ClCompile Include="Ev_Guest_Bath.cpp" />
+    <ClCompile Include="Ev_Guest_Room1.cpp" />
+    <ClCompile Include="Ev_Rest_Men.cpp" />
+    <ClCompile Include="Ev_Rest_Women.cpp" />
+    <ClCompile Include="fish.cpp" />
+    <ClCompile Include="flashlight.cpp" />
+    <ClCompile Include="Fld_201.cpp" />
+    <ClCompile Include="Fld_201_Bath.cpp" />
+    <ClCompile Include="Fld_202.cpp" />
+    <ClCompile Include="Fld_203.cpp" />
+    <ClCompile Include="Fld_Bath_Datui_Man.cpp" />
+    <ClCompile Include="Fld_Bath_Datui_Woman.cpp" />
+    <ClCompile Include="Fld_Bath_Room_Man.cpp" />
+    <ClCompile Include="Fld_Bath_Room_Woman.cpp" />
+    <ClCompile Include="Fld_Dining_Room.cpp" />
+    <ClCompile Include="Fld_GameOver.cpp" />
+    <ClCompile Include="Fld_Guest_Bath.cpp" />
+    <ClCompile Include="Fld_Guest_Room.cpp" />
+    <ClCompile Include="Fld_Sandou.cpp" />
+    <ClCompile Include="Fld_Secret_Room.cpp" />
+    <ClCompile Include="Fld_Staff_Room.cpp" />
+    <ClCompile Include="Fld_Title.cpp" />
+    <ClCompile Include="Fld_Rest_Men.cpp" />
+    <ClCompile Include="Fld_Rest_Women.cpp" />
+    <ClCompile Include="Fld_Roof_Kai.cpp" />
+    <ClCompile Include="Fld_F3.cpp" />
+    <ClCompile Include="Fld_Roof_Top.cpp" />
+    <ClCompile Include="Fld_Bath_Pass.cpp" />
+    <ClCompile Include="CollSegmet.cpp" />
+    <ClCompile Include="Fld_Lobby.cpp" />
+    <ClCompile Include="Fld_LobbyRestRoom.cpp" />
+    <ClCompile Include="Fld_Soto.cpp" />
+    <ClCompile Include="GameText.cpp" />
+    <ClCompile Include="GetKey.cpp" />
+    <ClCompile Include="HitPoint.cpp" />
+    <ClCompile Include="JoyStick.cpp" />
+    <ClCompile Include="KeyCode.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuMtrl.cpp" />
+    <ClCompile Include="message.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="file.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FVFSet.cpp" />
+    <ClCompile Include="FlagManager.cpp" />
+    <ClCompile Include="Fld_Intro.cpp" />
+    <ClCompile Include="LightState.cpp" />
+    <ClCompile Include="LiSPSM.cpp" />
+    <ClCompile Include="CLoadMesh.cpp" />
+    <ClCompile Include="CLoadTex.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MultiRend.cpp" />
+    <ClCompile Include="MyLibrary.cpp" />
+    <ClCompile Include="Personal.cpp" />
+    <ClCompile Include="Shot.cpp" />
+    <ClCompile Include="SoundFile.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Fld_TestRoom.cpp" />
+    <ClCompile Include="SVoice.cpp" />
+    <ClCompile Include="SystemData.cpp" />
+    <ClCompile Include="WindowsAPI.cpp" />
+    <ClCompile Include="CXAudio2.cpp" />
+    <ClCompile Include="X3DVoiceState.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ActiveEnemy.h" />
+    <ClInclude Include="arc.h" />
+    <ClInclude Include="CFontTex.h" />
+    <ClInclude Include="CItem.h" />
+    <ClInclude Include="CModel.h" />
+    <ClInclude Include="CObjFVF.h" />
+    <ClInclude Include="CObjMesh.h" />
+    <ClInclude Include="CObjParticl.h" />
+    <ClInclude Include="CObjSound.h" />
+    <ClInclude Include="CObjSurf.h" />
+    <ClInclude Include="CObjText.h" />
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="CLoadSound.h" />
+    <ClInclude Include="CollObj.h" />
+    <ClInclude Include="CollParfect.h" />
+    <ClInclude Include="CSound.h" />
+    <ClInclude Include="CString.h" />
+    <ClInclude Include="CSurface.h" />
+    <ClInclude Include="CSurTex.h" />
+    <ClInclude Include="DebugButton.h" />
+    <ClInclude Include="DirectInput.h" />
+    <ClInclude Include="Effect.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="EventCam.h" />
+    <ClInclude Include="EventObj.h" />
+    <ClInclude Include="Ev_201.h" />
+    <ClInclude Include="Ev_202.h" />
+    <ClInclude Include="Ev_203.h" />
+    <ClInclude Include="Ev_Bath_Datui_Woman.h" />
+    <ClInclude Include="Ev_Bath_Room_Man.h" />
+    <ClInclude Include="Ev_Bath_Room_Woman.h" />
+    <ClInclude Include="Ev_Dining_Room.h" />
+    <ClInclude Include="Ev_F31.h" />
+    <ClInclude Include="Ev_F32.h" />
+    <ClInclude Include="Ev_Lobby.h" />
+    <ClInclude Include="Ev_Lobby1.h" />
+    <ClInclude Include="Ev_Roof_Top.h" />
+    <ClInclude Include="Ev_Sandou.h" />
+    <ClInclude Include="Ev_SecretRoom.h" />
+    <ClInclude Include="Ev_Secret_Door.h" />
+    <ClInclude Include="Ev_Soto.h" />
+    <ClInclude Include="Ev_Soto1.h" />
+    <ClInclude Include="Ev_Soto2.h" />
+    <ClInclude Include="Ev_Staff_Room.h" />
+    <ClInclude Include="Ev_Title.h" />
+    <ClInclude Include="Ev_F3.h" />
+    <ClInclude Include="Ev_GameOver.h" />
+    <ClInclude Include="Ev_Guest_Room.h" />
+    <ClInclude Include="Ev_FirstStage.h" />
+    <ClInclude Include="Ev_Guest_Bath.h" />
+    <ClInclude Include="Ev_Guest_Room1.h" />
+    <ClInclude Include="Ev_Rest_Men.h" />
+    <ClInclude Include="Ev_Rest_Women.h" />
+    <ClInclude Include="fish.h" />
+    <ClInclude Include="flashlight.h" />
+    <ClInclude Include="Fld_201.h" />
+    <ClInclude Include="Fld_201_Bath.h" />
+    <ClInclude Include="Fld_202.h" />
+    <ClInclude Include="Fld_203.h" />
+    <ClInclude Include="Fld_Bath_Datui_Man.h" />
+    <ClInclude Include="Fld_Bath_Datui_Woman.h" />
+    <ClInclude Include="Fld_Bath_Room_Man.h" />
+    <ClInclude Include="Fld_Bath_Room_Woman.h" />
+    <ClInclude Include="Fld_Dining_Room.h" />
+    <ClInclude Include="Fld_GameOver.h" />
+    <ClInclude Include="Fld_Guest_Bath.h" />
+    <ClInclude Include="Fld_Guest_Room.h" />
+    <ClInclude Include="Fld_Sandou.h" />
+    <ClInclude Include="Fld_Secret_Room.h" />
+    <ClInclude Include="Fld_Staff_Room.h" />
+    <ClInclude Include="Fld_Title.h" />
+    <ClInclude Include="Fld_Rest_Men.h" />
+    <ClInclude Include="Fld_Rest_Women.h" />
+    <ClInclude Include="Fld_Roof_Kai.h" />
+    <ClInclude Include="Fld_F3.h" />
+    <ClInclude Include="Fld_Roof_Top.h" />
+    <ClInclude Include="Fld_Bath_Pass.h" />
+    <ClInclude Include="CollSegmet.h" />
+    <ClInclude Include="Fld_Lobby.h" />
+    <ClInclude Include="Fld_LobbyRestRoom.h" />
+    <ClInclude Include="Fld_Soto.h" />
+    <ClInclude Include="CSaveLoad.h" />
+    <ClInclude Include="GameText.h" />
+    <ClInclude Include="GetKey.h" />
+    <ClInclude Include="HitPoint.h" />
+    <ClInclude Include="JoyStick.h" />
+    <ClInclude Include="KeyCode.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuMtrl.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="file.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="FVFSet.h" />
+    <ClInclude Include="FlagManager.h" />
+    <ClInclude Include="Fld_Intro.h" />
+    <ClInclude Include="LightState.h" />
+    <ClInclude Include="LiSPSM.h" />
+    <ClInclude Include="CLoadMesh.h" />
+    <ClInclude Include="CLoadTex.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="message.h" />
+    <ClInclude Include="MultiRend.h" />
+    <ClInclude Include="MyLibrary.h" />
+    <ClInclude Include="Personal.h" />
+    <ClInclude Include="Shot.h" />
+    <ClInclude Include="SoundFile.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Fld_TestRoom.h" />
+    <ClInclude Include="SVoice.h" />
+    <ClInclude Include="SystemData.h" />
+    <ClInclude Include="WindowsAPI.h" />
+    <ClInclude Include="CXAudio2.h" />
+    <ClInclude Include="X3DVoiceState.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

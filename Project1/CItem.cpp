@@ -1,0 +1,34 @@
+//================================
+//アイテム
+//================================
+CItem::CItem()
+{
+	_stprintf_s(info,MAX_INFO,_T(""));
+	_stprintf_s(name,MAX_NAME,_T(""));
+}
+VOID CItem::Set(TCHAR* n,TCHAR* i)
+{
+	_stprintf_s(info,MAX_INFO,_T("%s"),i);
+	_stprintf_s(name,MAX_NAME,_T("%s"),n);
+}
+//================================
+//アイテムリスト
+//================================
+CItemList::CItemList()
+{
+	
+	item[ITEM_DARTS].Set(_T("ダーツ"),_T("担当者が暇つぶし用に置いていったもの\n幽霊には効かなそう"));
+	item[ITEM_LIGHT].Set(_T("懐中電灯"),_T("暗い場所を明るく照らす"));
+	item[ITEM_MASUI].Set(_T("食塩水"),_T("これをもったまま机のダーツを調べると\n食塩水つきダーツになる"));
+	item[ITEM_MASUI_DARTS].Set(_T("食塩水付きダーツ"),_T("心霊的なものに効果があるかも\n"));
+	item[ITEM_GUEST_KEY].Set(_T("205号室の鍵"),_T("手のひらが凍りつきそうなほど冷たい"));
+	item[ITEM_202_KEY].Set(_T("202号室の鍵"),_T("少しにおう"));
+	item[ITEM_ROOF_KEY].Set(_T("どこかの鍵"),_T("ラベルがついていない鍵"));
+	item[ITEM_SYOUKAKI].Set(_T("消火器"),_T("かなり古いがまだ使えそうだ"));
+	item[ITEM_DINING_KEY].Set(_T("食堂の鍵"),_T("わずかに洗剤がついている"));
+	item[ITEM_STAFF_KEY].Set(_T("従業員室の鍵"),_T("STAFF_ROOMと書かれている"));
+	item[ITEM_DESK_KEY].Set(_T("机の鍵"),_T("机の引き出しを開ける鍵"));
+	item[ITEM_203_KEY].Set(_T("203号室の鍵"),_T(""));
+	item[ITEM_GENKAN_KEY].Set(_T("正面玄関の鍵"),_T("外に出るため鍵"));
+	item[ITEM_TENYEN].Set(_T("10円玉"),_T(""));
+}

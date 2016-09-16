@@ -1,0 +1,762 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\CObj">
+      <UniqueIdentifier>{3a0bc26b-69d5-4552-9a5a-3ee039966794}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\XAudio2">
+      <UniqueIdentifier>{460c4068-bac5-4915-ab5e-10495b6ffcec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\MyLib">
+      <UniqueIdentifier>{43dcbc51-25e7-47e6-8e5e-b3670e77fbd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Collision">
+      <UniqueIdentifier>{1343bade-243e-41d3-806e-376306413801}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Direct3D">
+      <UniqueIdentifier>{8adf7522-077f-46a0-a92f-444f933bda18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\DirectInput">
+      <UniqueIdentifier>{790a9813-14ea-495e-a96a-abc613e80623}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Font">
+      <UniqueIdentifier>{453d0ae8-41d8-48ce-8651-6b5a36c6a8ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{e210cc4c-d078-4361-99f9-e638d07a7a2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Event">
+      <UniqueIdentifier>{189dd003-1623-4661-9ba5-7d3bff00f3e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Personal">
+      <UniqueIdentifier>{19d4e65e-2add-4a81-8ed1-a801243abfe1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Mian">
+      <UniqueIdentifier>{6e3f3206-fc8f-4cf5-b55e-e8dc0e248765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Flag">
+      <UniqueIdentifier>{eeeec8e4-f04f-4dcb-994d-f20513e92521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Enemy">
+      <UniqueIdentifier>{b7fab277-1c2d-4803-b7c0-1cc6229db97b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\F2">
+      <UniqueIdentifier>{66633748-0d59-4ebb-8d32-a170c52d10c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\F2\Ev_F2">
+      <UniqueIdentifier>{3aa35f96-435d-4c10-ba4b-6f1ddd8f8ef5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Field_Event">
+      <UniqueIdentifier>{219eaa47-bc43-47a6-beb4-f5210facae67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\F1">
+      <UniqueIdentifier>{f09e902d-4498-403c-b7ae-141d33db8f88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\F2\Fld_F2">
+      <UniqueIdentifier>{262ebce2-d059-419e-a4d4-580f7f2dc7cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\F1\Fld_F1">
+      <UniqueIdentifier>{1f1aed64-28a5-494d-b20b-746fb68e6299}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\F1\Ev_F1">
+      <UniqueIdentifier>{6a13fdcd-e600-4663-9029-b533edfb3bc5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MyLibrary.cpp">
+      <Filter>ソース ファイル\MyLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CModel.cpp">
+      <Filter>Game\Personal</Filter>
+    </ClCompile>
+    <ClCompile Include="Personal.cpp">
+      <Filter>Game\Personal</Filter>
+    </ClCompile>
+    <ClCompile Include="Shot.cpp">
+      <Filter>Game\Personal</Filter>
+    </ClCompile>
+    <ClCompile Include="message.cpp">
+      <Filter>Game\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>Game\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="EventCam.cpp">
+      <Filter>Game\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CollObj.cpp">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CollParfect.cpp">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CollSegmet.cpp">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundFile.cpp">
+      <Filter>ソース ファイル\XAudio2</Filter>
+    </ClCompile>
+    <ClCompile Include="CXAudio2.cpp">
+      <Filter>ソース ファイル\XAudio2</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjSound.cpp">
+      <Filter>ソース ファイル\CObj</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjMesh.cpp">
+      <Filter>ソース ファイル\CObj</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjFVF.cpp">
+      <Filter>ソース ファイル\CObj</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjParticl.cpp">
+      <Filter>ソース ファイル\CObj</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjText.cpp">
+      <Filter>ソース ファイル\CObj</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectInput.cpp">
+      <Filter>ソース ファイル\DirectInput</Filter>
+    </ClCompile>
+    <ClCompile Include="GetKey.cpp">
+      <Filter>ソース ファイル\DirectInput</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyCode.cpp">
+      <Filter>ソース ファイル\DirectInput</Filter>
+    </ClCompile>
+    <ClCompile Include="JoyStick.cpp">
+      <Filter>ソース ファイル\DirectInput</Filter>
+    </ClCompile>
+    <ClCompile Include="CString.cpp">
+      <Filter>ソース ファイル\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>ソース ファイル\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiRend.cpp">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CLoadMesh.cpp">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CLoadTex.cpp">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="FVFSet.cpp">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="LightState.cpp">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="LiSPSM.cpp">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowsAPI.cpp">
+      <Filter>ソース ファイル\MyLib</Filter>
+    </ClCompile>
+    <ClCompile Include="file.cpp">
+      <Filter>ソース ファイル\MyLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CFontTex.cpp">
+      <Filter>ソース ファイル\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="GameText.cpp">
+      <Filter>Game\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjSurf.cpp">
+      <Filter>ソース ファイル\CObj</Filter>
+    </ClCompile>
+    <ClCompile Include="CSurface.cpp">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="CSurTex.cpp">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClCompile>
+    <ClCompile Include="EventObj.cpp">
+      <Filter>Game\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Game\Personal</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuMtrl.cpp">
+      <Filter>Game\Personal</Filter>
+    </ClCompile>
+    <ClCompile Include="CSaveLoad.cpp">
+      <Filter>ソース ファイル\MyLib</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemData.cpp">
+      <Filter>ソース ファイル\MyLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CLoadSound.cpp">
+      <Filter>ソース ファイル\XAudio2</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>ソース ファイル\XAudio2</Filter>
+    </ClCompile>
+    <ClCompile Include="X3DVoiceState.cpp">
+      <Filter>ソース ファイル\XAudio2</Filter>
+    </ClCompile>
+    <ClCompile Include="SVoice.cpp">
+      <Filter>ソース ファイル\XAudio2</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugButton.cpp">
+      <Filter>Game\Mian</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Game\Mian</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Game\Mian</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="FlagManager.cpp">
+      <Filter>Game\Flag</Filter>
+    </ClCompile>
+    <ClCompile Include="CItem.cpp">
+      <Filter>Game\Flag</Filter>
+    </ClCompile>
+    <ClCompile Include="HitPoint.cpp">
+      <Filter>Game\Flag</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="fish.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_TestRoom.cpp">
+      <Filter>Game\Field_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Title.cpp">
+      <Filter>Game\Field_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Intro.cpp">
+      <Filter>Game\Field_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_GameOver.cpp">
+      <Filter>Game\Field_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="ActiveEnemy.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_F3.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Guest_Bath.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Guest_Room.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Guest_Room1.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Rest_Men.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Rest_Women.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_202.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="flashlight.cpp">
+      <Filter>Game\Personal</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Roof_Top.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_201.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_F31.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_201.cpp">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_201_Bath.cpp">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_202.cpp">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Rest_Men.cpp">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Rest_Women.cpp">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Roof_Kai.cpp">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Roof_Top.cpp">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_F3.cpp">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Guest_Room.cpp">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Guest_Bath.cpp">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_GameOver.cpp">
+      <Filter>Game\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Title.cpp">
+      <Filter>Game\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Bath_Datui_Man.cpp">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Bath_Datui_Woman.cpp">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Bath_Pass.cpp">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Bath_Room_Man.cpp">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Bath_Room_Woman.cpp">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Dining_Room.cpp">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Lobby.cpp">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_LobbyRestRoom.cpp">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Soto.cpp">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Lobby.cpp">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Lobby1.cpp">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Bath_Room_Man.cpp">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Bath_Datui_Woman.cpp">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Bath_Room_Woman.cpp">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Dining_Room.cpp">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Staff_Room.cpp">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Staff_Room.cpp">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_203.cpp">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_203.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Soto.cpp">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Sandou.cpp">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Sandou.cpp">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Soto1.cpp">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_FirstStage.cpp">
+      <Filter>Game\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Secret_Door.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Fld_Secret_Room.cpp">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_SecretRoom.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_Soto2.cpp">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClCompile>
+    <ClCompile Include="Ev_F32.cpp">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Game\Mian</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugButton.h">
+      <Filter>Game\Mian</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>Game\Mian</Filter>
+    </ClInclude>
+    <ClInclude Include="CModel.h">
+      <Filter>Game\Personal</Filter>
+    </ClInclude>
+    <ClInclude Include="Shot.h">
+      <Filter>Game\Personal</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Game\Personal</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuMtrl.h">
+      <Filter>Game\Personal</Filter>
+    </ClInclude>
+    <ClInclude Include="Personal.h">
+      <Filter>Game\Personal</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Game\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="EventCam.h">
+      <Filter>Game\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="EventObj.h">
+      <Filter>Game\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="GameText.h">
+      <Filter>Game\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="message.h">
+      <Filter>Game\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjFVF.h">
+      <Filter>ソース ファイル\CObj</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjText.h">
+      <Filter>ソース ファイル\CObj</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjMesh.h">
+      <Filter>ソース ファイル\CObj</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjParticl.h">
+      <Filter>ソース ファイル\CObj</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjSound.h">
+      <Filter>ソース ファイル\CObj</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjSurf.h">
+      <Filter>ソース ファイル\CObj</Filter>
+    </ClInclude>
+    <ClInclude Include="X3DVoiceState.h">
+      <Filter>ソース ファイル\XAudio2</Filter>
+    </ClInclude>
+    <ClInclude Include="CLoadSound.h">
+      <Filter>ソース ファイル\XAudio2</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>ソース ファイル\XAudio2</Filter>
+    </ClInclude>
+    <ClInclude Include="CXAudio2.h">
+      <Filter>ソース ファイル\XAudio2</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundFile.h">
+      <Filter>ソース ファイル\XAudio2</Filter>
+    </ClInclude>
+    <ClInclude Include="SVoice.h">
+      <Filter>ソース ファイル\XAudio2</Filter>
+    </ClInclude>
+    <ClInclude Include="CSaveLoad.h">
+      <Filter>ソース ファイル\MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsAPI.h">
+      <Filter>ソース ファイル\MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="file.h">
+      <Filter>ソース ファイル\MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLibrary.h">
+      <Filter>ソース ファイル\MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemData.h">
+      <Filter>ソース ファイル\MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="CFontTex.h">
+      <Filter>ソース ファイル\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>ソース ファイル\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="CString.h">
+      <Filter>ソース ファイル\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectInput.h">
+      <Filter>ソース ファイル\DirectInput</Filter>
+    </ClInclude>
+    <ClInclude Include="GetKey.h">
+      <Filter>ソース ファイル\DirectInput</Filter>
+    </ClInclude>
+    <ClInclude Include="JoyStick.h">
+      <Filter>ソース ファイル\DirectInput</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyCode.h">
+      <Filter>ソース ファイル\DirectInput</Filter>
+    </ClInclude>
+    <ClInclude Include="CLoadMesh.h">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiRend.h">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClInclude>
+    <ClInclude Include="CLoadTex.h">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClInclude>
+    <ClInclude Include="CSurface.h">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClInclude>
+    <ClInclude Include="CSurTex.h">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClInclude>
+    <ClInclude Include="FVFSet.h">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClInclude>
+    <ClInclude Include="LightState.h">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClInclude>
+    <ClInclude Include="LiSPSM.h">
+      <Filter>ソース ファイル\Direct3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollSegmet.h">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollObj.h">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollParfect.h">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="FlagManager.h">
+      <Filter>Game\Flag</Filter>
+    </ClInclude>
+    <ClInclude Include="CItem.h">
+      <Filter>Game\Flag</Filter>
+    </ClInclude>
+    <ClInclude Include="HitPoint.h">
+      <Filter>Game\Flag</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="fish.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Title.h">
+      <Filter>Game\Field_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_TestRoom.h">
+      <Filter>Game\Field_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Intro.h">
+      <Filter>Game\Field_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_GameOver.h">
+      <Filter>Game\Field_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="ActiveEnemy.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Rest_Women.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_F3.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Guest_Bath.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Guest_Room.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Guest_Room1.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Rest_Men.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_202.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="flashlight.h">
+      <Filter>Game\Personal</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Roof_Top.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_201.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_F31.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_202.h">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_201.h">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_201_Bath.h">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Roof_Top.h">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Rest_Men.h">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Rest_Women.h">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Roof_Kai.h">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_F3.h">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Guest_Room.h">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Guest_Bath.h">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_GameOver.h">
+      <Filter>Game\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Title.h">
+      <Filter>Game\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Soto.h">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Bath_Datui_Man.h">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Bath_Datui_Woman.h">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Bath_Pass.h">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Bath_Room_Man.h">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Bath_Room_Woman.h">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Dining_Room.h">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Lobby.h">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_LobbyRestRoom.h">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Lobby.h">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Lobby1.h">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Bath_Room_Man.h">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Bath_Datui_Woman.h">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Bath_Room_Woman.h">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Dining_Room.h">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Staff_Room.h">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Staff_Room.h">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_203.h">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_203.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Soto.h">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Sandou.h">
+      <Filter>Game\F1\Fld_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Sandou.h">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Soto1.h">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_FirstStage.h">
+      <Filter>Game\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="arc.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Secret_Door.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Fld_Secret_Room.h">
+      <Filter>Game\F2\Fld_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_SecretRoom.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_Soto2.h">
+      <Filter>Game\F1\Ev_F1</Filter>
+    </ClInclude>
+    <ClInclude Include="Ev_F32.h">
+      <Filter>Game\F2\Ev_F2</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
