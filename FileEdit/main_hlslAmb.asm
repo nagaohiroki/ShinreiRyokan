@@ -34,38 +34,46 @@ technique TShader
             //   vFog         c15      1
             //
             
-                vs_1_1
+                vs_3_0
                 def c16, 0.5, 0, 0, 0
                 dcl_position v0
                 dcl_normal v1
+                dcl_position o0
+                dcl_color o1
+                dcl_fog o2.x
+                dcl_texcoord o3
+                dcl_texcoord1 o4.xyz
+                dcl_texcoord2 o5.xyz
+                dcl_texcoord3 o6.xyz
+                dcl_texcoord4 o7.xyz
                 dp4 r0.w, v0, c3
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
-                dp4 oPos.z, r0, c6
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
+                dp4 o0.z, r0, c6
                 dp4 r1.x, v1, c12
                 max r1.x, r1.x, c12.w
-                mul oD0, r1.x, c13
-                add oT2.xyz, -v0, c14
+                mul o1, r1.x, c13
+                add o5.xyz, c14, -v0
                 dp4 r1.x, r0, c7
-                mad oFog, r1.x, c15.y, c15.x
-                mov oPos.w, r1.x
-                dp3 oT3.x, v1, c0
-                dp3 oT3.y, v1, c1
-                dp3 oT3.z, v1, c2
-                dp4 oT0.z, r0, c10
+                mad o2.x, r1.x, c15.y, c15.x
+                mov o0.w, r1.x
+                dp3 o6.x, v1, c0
+                dp3 o6.y, v1, c1
+                dp3 o6.z, v1, c2
+                dp4 o3.z, r0, c10
                 dp4 r1.x, r0, c8
                 dp4 r1.y, r0, c11
                 dp4 r0.w, r0, c9
-                mov oT4.xyz, r0
+                mov o7.xyz, r0
                 add r0.x, r1.y, -r0.w
-                mul oT0.y, r0.x, c16.x
+                mul o3.y, r0.x, c16.x
                 add r0.x, r1.y, r1.x
-                mov oT0.w, r1.y
-                mul oT0.x, r0.x, c16.x
-                mov oT1.xyz, v1
+                mov o3.w, r1.y
+                mul o3.x, r0.x, c16.x
+                mov o4.xyz, v1
             
             // approximately 28 instruction slots used
             };
@@ -121,54 +129,51 @@ technique TShader
             //   ShadowTexSamp s0       1
             //
             
-                ps_2_0
-                def c9, 0, 1, 0, 0
-                dcl v0.xyz
-                dcl t0
-                dcl t1.xyz
-                dcl t2.xyz
-                dcl t3.xyz
-                dcl t4.xyz
+                ps_3_0
+                def c9, 1, 0, 0, 0
+                dcl_color v0.xyz
+                dcl_texcoord v1
+                dcl_texcoord1 v2.xyz
+                dcl_texcoord2 v3.xyz
+                dcl_texcoord3 v4.xyz
+                dcl_texcoord4 v5.xyz
                 dcl_2d s0
-                mov r0.xyw, t0
-                mov r0.z, c9.x
+                mul r0, c9.xxyx, v1.xyxw
                 texldp r0, r0, s0
-                rcp r0.y, t0.w
-                mad r0.y, t0.z, r0.y, -c4.x
+                rcp r0.y, v1.w
+                mad r0.y, v1.z, r0.y, -c4.x
                 add r0.x, -r0.y, r0.x
-                mov r0.y, c9.y
-                cmp r0.x, r0.x, r0.y, c4.y
-                dp3 r0.y, t2, t2
+                mov r1.x, c9.x
+                cmp r0.x, r0.x, r1.x, c4.y
+                dp3 r0.y, v3, v3
                 rsq r0.y, r0.y
-                mad r1.xyz, t2, r0.y, c2
-                nrm r2.xyz, r1
-                nrm r1.xyz, t1
-                dp3 r0.y, r1, r2
-                max r1.x, r0.y, c9.x
+                mad r0.yzw, v3.xxyz, r0.y, c2.xxyz
+                nrm r1.xyz, r0.yzww
+                nrm r2.xyz, v2
+                dp3 r0.y, r2, r1
+                max r1.x, r0.y, c9.y
                 pow r0.y, r1.x, c3.w
-                mul r0.yzw, r0.y, c3.wzyx
-                mad r1.xyz, v0, r0.x, r0.wzyx
-                dp3_sat r1.w, t3, c8
-                pow r0.x, r1.w, c3.w
-                add r2.xyz, -t4, c7
-                dp3 r1.w, r2, r2
-                rsq r1.w, r1.w
-                mul r2.xyz, r1.w, r2
-                mul r1.w, r1.w, c7.w
-                dp3_sat r2.w, t3, r2
+                mul r0.yzw, r0.y, c3.xxyz
+                mad r1.xyz, v0, r0.x, r0.yzww
+                dp3_sat r0.x, v4, c8
+                pow r1.w, r0.x, c3.w
+                add r2.xyz, c7, -v5
+                dp3 r0.x, r2, r2
+                rsq r0.x, r0.x
+                mul r2.xyz, r0.x, r2
+                mul r0.x, r0.x, c7.w
+                dp3_sat r2.w, v4, r2
                 dp3 r2.x, r2, c8
                 add_sat r2.x, r2.x, -c8.w
-                mad r2.yzw, c6.wzyx, r2.w, r0.x
-                mul r2.yzw, r1.w, r2
-                mad r1.xyz, r2.wzyx, r2.x, r1
-                mad r0.xyz, r2.wzyx, r2.x, r0.wzyx
-                mul r0.xyz, r0, c5
-                mov r1.w, c0.x
-                mov oC0, r1
-                mov r0.w, c1.x
-                mov oC1, r0
+                mad r2.yzw, c6.xxyz, r2.w, r1.w
+                mul r2.yzw, r0.x, r2
+                mad oC0.xyz, r2.yzww, r2.x, r1
+                mad r0.xyz, r2.yzww, r2.x, r0.yzww
+                mul oC1.xyz, r0, c5
+                mov oC0.w, c0.x
+                mov oC1.w, c1.x
             
-            // approximately 45 instruction slots used (1 texture, 44 arithmetic)
+            // approximately 42 instruction slots used (1 texture, 41 arithmetic)
             };
     }
     pass Mesh_Tex
@@ -202,40 +207,49 @@ technique TShader
             //   vFog         c15      1
             //
             
-                vs_1_1
+                vs_3_0
                 def c16, 0.5, 0, 0, 0
                 dcl_position v0
                 dcl_texcoord v1
                 dcl_normal v2
+                dcl_position o0
+                dcl_color o1
+                dcl_fog o2.x
+                dcl_texcoord o3.xy
+                dcl_texcoord1 o4
+                dcl_texcoord2 o5.xyz
+                dcl_texcoord3 o6.xyz
+                dcl_texcoord4 o7.xyz
+                dcl_texcoord5 o8.xyz
                 dp4 r0.w, v0, c3
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
-                dp4 oPos.z, r0, c6
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
+                dp4 o0.z, r0, c6
                 dp4 r1.x, v2, c12
                 max r1.x, r1.x, c12.w
-                mul oD0, r1.x, c13
-                add oT3.xyz, -v0, c14
+                mul o1, r1.x, c13
+                add o6.xyz, c14, -v0
                 dp4 r1.x, r0, c7
-                mad oFog, r1.x, c15.y, c15.x
-                mov oPos.w, r1.x
-                dp3 oT4.x, v2, c0
-                dp3 oT4.y, v2, c1
-                dp3 oT4.z, v2, c2
-                dp4 oT1.z, r0, c10
+                mad o2.x, r1.x, c15.y, c15.x
+                mov o0.w, r1.x
+                dp3 o7.x, v2, c0
+                dp3 o7.y, v2, c1
+                dp3 o7.z, v2, c2
+                dp4 o4.z, r0, c10
                 dp4 r1.x, r0, c8
                 dp4 r1.y, r0, c11
                 dp4 r0.w, r0, c9
-                mov oT5.xyz, r0
+                mov o8.xyz, r0
                 add r0.x, r1.y, -r0.w
-                mul oT1.y, r0.x, c16.x
+                mul o4.y, r0.x, c16.x
                 add r0.x, r1.y, r1.x
-                mov oT1.w, r1.y
-                mul oT1.x, r0.x, c16.x
-                mov oT0.xy, v1
-                mov oT2.xyz, v2
+                mov o4.w, r1.y
+                mul o4.x, r0.x, c16.x
+                mov o3.xy, v1
+                mov o5.xyz, v2
             
             // approximately 29 instruction slots used
             };
@@ -275,58 +289,56 @@ technique TShader
             //   ShadowTexSamp s1       1
             //
             
-                ps_2_0
-                def c8, 0, 1, 0, 0
-                dcl v0.xyz
-                dcl t0.xy
-                dcl t1
-                dcl t2.xyz
-                dcl t3.xyz
-                dcl t4.xyz
-                dcl t5.xyz
+                ps_3_0
+                def c8, 1, 0, 0, 0
+                dcl_color v0.xyz
+                dcl_texcoord v1.xy
+                dcl_texcoord1 v2
+                dcl_texcoord2 v3.xyz
+                dcl_texcoord3 v4.xyz
+                dcl_texcoord4 v5.xyz
+                dcl_texcoord5 v6.xyz
                 dcl_2d s0
                 dcl_2d s1
-                texld r0, t0, s0
-                mov r1.xyw, t1
-                mov r1.z, c8.x
-                texldp r1, r1, s1
-                rcp r1.y, t1.w
-                mad r1.y, t1.z, r1.y, -c3.x
-                add r1.x, -r1.y, r1.x
-                mov r1.y, c8.y
-                cmp r1.x, r1.x, r1.y, c3.y
-                dp3 r1.y, t3, t3
-                rsq r1.y, r1.y
-                mad r2.xyz, t3, r1.y, c0
-                nrm r3.xyz, r2
-                nrm r2.xyz, t2
-                dp3 r1.y, r2, r3
-                max r2.x, r1.y, c8.x
-                pow r1.y, r2.x, c2.w
-                mul r1.yzw, r1.y, c2.wzyx
-                mul r0.xyz, r0, v0
-                mul r2.w, r0.w, c1.w
-                mad r0.xyz, r0, r1.x, r1.wzyx
-                dp3_sat r0.w, t4, c7
-                pow r1.x, r0.w, c2.w
-                add r3.xyz, -t5, c6
-                dp3 r0.w, r3, r3
-                rsq r0.w, r0.w
-                mul r3.xyz, r0.w, r3
-                mul r0.w, r0.w, c6.w
-                dp3_sat r3.w, t4, r3
-                dp3 r3.x, r3, c7
-                add_sat r3.x, r3.x, -c7.w
-                mad r3.yzw, c5.wzyx, r3.w, r1.x
-                mul r3.yzw, r0.w, r3
-                mad r2.xyz, r3.wzyx, r3.x, r0
-                mad r0.xyz, r3.wzyx, r3.x, r1.wzyx
-                mul r0.xyz, r0, c4
-                mov oC0, r2
-                mov r0.w, r2.w
-                mov oC1, r0
+                mul r0, c8.xxyx, v2.xyxw
+                texldp r0, r0, s1
+                rcp r0.y, v2.w
+                mad r0.y, v2.z, r0.y, -c3.x
+                add r0.x, -r0.y, r0.x
+                mov r1.x, c8.x
+                cmp r0.x, r0.x, r1.x, c3.y
+                dp3 r0.y, v4, v4
+                rsq r0.y, r0.y
+                mad r0.yzw, v4.xxyz, r0.y, c0.xxyz
+                nrm r1.xyz, r0.yzww
+                nrm r2.xyz, v3
+                dp3 r0.y, r2, r1
+                max r1.x, r0.y, c8.y
+                pow r0.y, r1.x, c2.w
+                mul r0.yzw, r0.y, c2.xxyz
+                texld r1, v1, s0
+                mul r1.xyz, r1, v0
+                mul r1.w, r1.w, c1.w
+                mad r1.xyz, r1, r0.x, r0.yzww
+                dp3_sat r0.x, v5, c7
+                pow r2.x, r0.x, c2.w
+                add r2.yzw, c6.xxyz, -v6.xxyz
+                dp3 r0.x, r2.yzww, r2.yzww
+                rsq r0.x, r0.x
+                mul r2.yzw, r0.x, r2
+                mul r0.x, r0.x, c6.w
+                dp3_sat r3.x, v5, r2.yzww
+                dp3 r2.y, r2.yzww, c7
+                add_sat r2.y, r2.y, -c7.w
+                mad r2.xzw, c5.xyyz, r3.x, r2.x
+                mul r2.xzw, r0.x, r2
+                mad oC0.xyz, r2.xzww, r2.y, r1
+                mad r0.xyz, r2.xzww, r2.y, r0.yzww
+                mul oC1.xyz, r0, c4
+                mov oC0.w, r1.w
+                mov oC1.w, r1.w
             
-            // approximately 47 instruction slots used (2 texture, 45 arithmetic)
+            // approximately 45 instruction slots used (2 texture, 43 arithmetic)
             };
     }
     pass Mesh_AlphaTex
@@ -360,40 +372,49 @@ technique TShader
             //   vFog         c15      1
             //
             
-                vs_1_1
+                vs_3_0
                 def c16, 0.5, 0, 0, 0
                 dcl_position v0
                 dcl_texcoord v1
                 dcl_normal v2
+                dcl_position o0
+                dcl_color o1
+                dcl_fog o2.x
+                dcl_texcoord o3.xy
+                dcl_texcoord1 o4
+                dcl_texcoord2 o5.xyz
+                dcl_texcoord3 o6.xyz
+                dcl_texcoord4 o7.xyz
+                dcl_texcoord5 o8.xyz
                 dp4 r0.w, v0, c3
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
-                dp4 oPos.z, r0, c6
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
+                dp4 o0.z, r0, c6
                 dp4 r1.x, v2, c12
                 max r1.x, r1.x, c12.w
-                mul oD0, r1.x, c13
-                add oT3.xyz, -v0, c14
+                mul o1, r1.x, c13
+                add o6.xyz, c14, -v0
                 dp4 r1.x, r0, c7
-                mad oFog, r1.x, c15.y, c15.x
-                mov oPos.w, r1.x
-                dp3 oT4.x, v2, c0
-                dp3 oT4.y, v2, c1
-                dp3 oT4.z, v2, c2
-                dp4 oT1.z, r0, c10
+                mad o2.x, r1.x, c15.y, c15.x
+                mov o0.w, r1.x
+                dp3 o7.x, v2, c0
+                dp3 o7.y, v2, c1
+                dp3 o7.z, v2, c2
+                dp4 o4.z, r0, c10
                 dp4 r1.x, r0, c8
                 dp4 r1.y, r0, c11
                 dp4 r0.w, r0, c9
-                mov oT5.xyz, r0
+                mov o8.xyz, r0
                 add r0.x, r1.y, -r0.w
-                mul oT1.y, r0.x, c16.x
+                mul o4.y, r0.x, c16.x
                 add r0.x, r1.y, r1.x
-                mov oT1.w, r1.y
-                mul oT1.x, r0.x, c16.x
-                mov oT0.xy, v1
-                mov oT2.xyz, v2
+                mov o4.w, r1.y
+                mul o4.x, r0.x, c16.x
+                mov o3.xy, v1
+                mov o5.xyz, v2
             
             // approximately 29 instruction slots used
             };
@@ -433,58 +454,56 @@ technique TShader
             //   ShadowTexSamp s1       1
             //
             
-                ps_2_0
-                def c8, 0, 1, 0, 0
-                dcl v0.xyz
-                dcl t0.xy
-                dcl t1
-                dcl t2.xyz
-                dcl t3.xyz
-                dcl t4.xyz
-                dcl t5.xyz
+                ps_3_0
+                def c8, 1, 0, 0, 0
+                dcl_color v0.xyz
+                dcl_texcoord v1.xy
+                dcl_texcoord1 v2
+                dcl_texcoord2 v3.xyz
+                dcl_texcoord3 v4.xyz
+                dcl_texcoord4 v5.xyz
+                dcl_texcoord5 v6.xyz
                 dcl_2d s0
                 dcl_2d s1
-                texld r0, t0, s0
-                mov r1.xyw, t1
-                mov r1.z, c8.x
-                texldp r1, r1, s1
-                rcp r1.y, t1.w
-                mad r1.y, t1.z, r1.y, -c3.x
-                add r1.x, -r1.y, r1.x
-                mov r1.y, c8.y
-                cmp r1.x, r1.x, r1.y, c3.y
-                dp3 r1.y, t3, t3
-                rsq r1.y, r1.y
-                mad r2.xyz, t3, r1.y, c0
-                nrm r3.xyz, r2
-                nrm r2.xyz, t2
-                dp3 r1.y, r2, r3
-                max r2.x, r1.y, c8.x
-                pow r1.y, r2.x, c2.w
-                mul r1.yzw, r1.y, c2.wzyx
-                mul r0.xyz, r0, v0
-                mul r2.w, r0.w, c1.w
-                mad r0.xyz, r0, r1.x, r1.wzyx
-                dp3_sat r0.w, t4, c7
-                pow r1.x, r0.w, c2.w
-                add r3.xyz, -t5, c6
-                dp3 r0.w, r3, r3
-                rsq r0.w, r0.w
-                mul r3.xyz, r0.w, r3
-                mul r0.w, r0.w, c6.w
-                dp3_sat r3.w, t4, r3
-                dp3 r3.x, r3, c7
-                add_sat r3.x, r3.x, -c7.w
-                mad r3.yzw, c5.wzyx, r3.w, r1.x
-                mul r3.yzw, r0.w, r3
-                mad r2.xyz, r3.wzyx, r3.x, r0
-                mad r0.xyz, r3.wzyx, r3.x, r1.wzyx
-                mul r0.xyz, r0, c4
-                mov oC0, r2
-                mov r0.w, r2.w
-                mov oC1, r0
+                mul r0, c8.xxyx, v2.xyxw
+                texldp r0, r0, s1
+                rcp r0.y, v2.w
+                mad r0.y, v2.z, r0.y, -c3.x
+                add r0.x, -r0.y, r0.x
+                mov r1.x, c8.x
+                cmp r0.x, r0.x, r1.x, c3.y
+                dp3 r0.y, v4, v4
+                rsq r0.y, r0.y
+                mad r0.yzw, v4.xxyz, r0.y, c0.xxyz
+                nrm r1.xyz, r0.yzww
+                nrm r2.xyz, v3
+                dp3 r0.y, r2, r1
+                max r1.x, r0.y, c8.y
+                pow r0.y, r1.x, c2.w
+                mul r0.yzw, r0.y, c2.xxyz
+                texld r1, v1, s0
+                mul r1.xyz, r1, v0
+                mul r1.w, r1.w, c1.w
+                mad r1.xyz, r1, r0.x, r0.yzww
+                dp3_sat r0.x, v5, c7
+                pow r2.x, r0.x, c2.w
+                add r2.yzw, c6.xxyz, -v6.xxyz
+                dp3 r0.x, r2.yzww, r2.yzww
+                rsq r0.x, r0.x
+                mul r2.yzw, r0.x, r2
+                mul r0.x, r0.x, c6.w
+                dp3_sat r3.x, v5, r2.yzww
+                dp3 r2.y, r2.yzww, c7
+                add_sat r2.y, r2.y, -c7.w
+                mad r2.xzw, c5.xyyz, r3.x, r2.x
+                mul r2.xzw, r0.x, r2
+                mad oC0.xyz, r2.xzww, r2.y, r1
+                mad r0.xyz, r2.xzww, r2.y, r0.yzww
+                mul oC1.xyz, r0, c4
+                mov oC0.w, r1.w
+                mov oC1.w, r1.w
             
-            // approximately 47 instruction slots used (2 texture, 45 arithmetic)
+            // approximately 45 instruction slots used (2 texture, 43 arithmetic)
             };
     }
     pass Mesh_Bump
@@ -516,53 +535,59 @@ technique TShader
             //   vFog         c14      1
             //
             
-                vs_1_1
+                vs_3_0
                 def c15, 0.5, 0, 0, 0
                 dcl_position v0
                 dcl_texcoord v1
                 dcl_normal v2
                 dcl_tangent v3
                 dcl_binormal v4
+                dcl_position o0
+                dcl_fog o1.x
+                dcl_texcoord o2.xy
+                dcl_texcoord1 o3
+                dcl_texcoord2 o4.xyz
+                dcl_texcoord3 o5.xyz
+                dcl_texcoord4 o6.xyz
+                dcl_texcoord5 o7.xyz
                 dp4 r0.w, v0, c3
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
-                dp4 oPos.z, r0, c6
-                add r1.xyz, -v0, c13
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
+                dp4 o0.z, r0, c6
+                add r1.xyz, c13, -v0
+                nrm r2.xyz, r1
+                dp3 r1.x, r2, v3
+                dp3 r1.y, r2, v4
+                dp3 r1.z, r2, v2
                 dp3 r1.w, r1, r1
                 rsq r1.w, r1.w
-                mul r1.xyz, r1.w, r1
-                dp3 r2.x, r1, v3
-                dp3 r2.y, r1, v4
-                dp3 r2.z, r1, v2
-                dp3 r1.x, r2, r2
-                rsq r1.x, r1.x
-                mul oT3.xyz, r1.x, r2
+                mul o5.xyz, r1.w, r1
                 dp3 r1.x, c12, v3
                 dp3 r1.y, c12, v4
                 dp3 r1.z, c12, v2
                 dp3 r1.w, r1, r1
                 rsq r1.w, r1.w
-                mul oT2.xyz, r1.w, r1
+                mul o4.xyz, r1.w, r1
                 dp4 r1.x, r0, c7
-                mad oFog, r1.x, c14.y, c14.x
-                mov oPos.w, r1.x
-                dp3 oT4.x, v2, c0
-                dp3 oT4.y, v2, c1
-                dp3 oT4.z, v2, c2
-                dp4 oT1.z, r0, c10
+                mad o1.x, r1.x, c14.y, c14.x
+                mov o0.w, r1.x
+                dp3 o6.x, v2, c0
+                dp3 o6.y, v2, c1
+                dp3 o6.z, v2, c2
+                dp4 o3.z, r0, c10
                 dp4 r1.x, r0, c8
                 dp4 r1.y, r0, c11
                 dp4 r0.w, r0, c9
-                mov oT5.xyz, r0
+                mov o7.xyz, r0
                 add r0.x, r1.y, -r0.w
-                mul oT1.y, r0.x, c15.x
+                mul o3.y, r0.x, c15.x
                 add r0.x, r1.y, r1.x
-                mov oT1.w, r1.y
-                mul oT1.x, r0.x, c15.x
-                mov oT0.xy, v1
+                mov o3.w, r1.y
+                mul o3.x, r0.x, c15.x
+                mov o2.xy, v1
             
             // approximately 40 instruction slots used
             };
@@ -604,61 +629,59 @@ technique TShader
             //   NormalSamp    s2       1
             //
             
-                ps_2_0
-                def c8, 2, -1, 0, 1
-                dcl t0.xy
-                dcl t1
-                dcl t2.xyz
-                dcl t3.xyz
-                dcl t4.xyz
-                dcl t5.xyz
+                ps_3_0
+                def c8, 2, -1, 1, 0
+                dcl_texcoord v0.xy
+                dcl_texcoord1 v1
+                dcl_texcoord2 v2.xyz
+                dcl_texcoord3 v3.xyz
+                dcl_texcoord4 v4.xyz
+                dcl_texcoord5 v5.xyz
                 dcl_2d s0
                 dcl_2d s1
                 dcl_2d s2
-                texld r0, t0, s2
-                texld r1, t0, s0
-                mov r2.xyw, t1
-                mov r2.z, c8.z
-                texldp r2, r2, s1
-                rcp r0.w, t1.w
-                mad r0.w, t1.z, r0.w, -c3.x
-                add r0.w, -r0.w, r2.x
-                mov r2.w, c8.w
-                cmp r0.w, r0.w, r2.w, c3.y
-                mov r2.xyz, t2
-                add r2.xyz, r2, t3
-                nrm r3.xyz, r2
-                mad r0.xyz, r0, c8.x, c8.y
-                dp3 r2.x, r0, r3
-                dp3 r0.x, r0, t2
-                max r2.y, c0.w, r0.x
-                mul r0.xyz, r2.y, c1
-                max r3.x, r2.x, c8.z
-                pow r2.x, r3.x, c2.w
-                mul r2.xyz, r2.x, c2
-                mul r0.xyz, r1, r0
-                mul r1.w, r1.w, c1.w
-                mad r0.xyz, r0, r0.w, r2
-                dp3_sat r0.w, t4, c7
-                pow r2.w, r0.w, c2.w
-                add r3.xyz, -t5, c6
-                dp3 r0.w, r3, r3
+                mul r0, c8.zzwz, v1.xyxw
+                texldp r0, r0, s1
+                rcp r0.y, v1.w
+                mad r0.y, v1.z, r0.y, -c3.x
+                add r0.x, -r0.y, r0.x
+                mov r0.z, c8.z
+                cmp r0.x, r0.x, r0.z, c3.y
+                mov r1.xyz, v2
+                add r0.yzw, r1.xxyz, v3.xxyz
+                nrm r1.xyz, r0.yzww
+                texld r2, v0, s2
+                mad r0.yzw, r2.xxyz, c8.x, c8.y
+                dp3 r1.x, r0.yzww, r1
+                dp3 r0.y, r0.yzww, v2
+                max r1.y, c0.w, r0.y
+                mul r0.yzw, r1.y, c1.xxyz
+                max r2.x, r1.x, c8.w
+                pow r1.x, r2.x, c2.w
+                mul r1.xyz, r1.x, c2
+                texld r2, v0, s0
+                mul r0.yzw, r0, r2.xxyz
+                mul r1.w, r2.w, c1.w
+                mad r0.xyz, r0.yzww, r0.x, r1
+                dp3_sat r0.w, v4, c7
+                pow r2.x, r0.w, c2.w
+                add r2.yzw, c6.xxyz, -v5.xxyz
+                dp3 r0.w, r2.yzww, r2.yzww
                 rsq r0.w, r0.w
-                mul r3.xyz, r0.w, r3
+                mul r2.yzw, r0.w, r2
                 mul r0.w, r0.w, c6.w
-                dp3_sat r3.w, t4, r3
-                dp3 r3.x, r3, c7
-                add_sat r3.x, r3.x, -c7.w
-                mad r3.yzw, c5.wzyx, r3.w, r2.w
-                mul r3.yzw, r0.w, r3
-                mad r1.xyz, r3.wzyx, r3.x, r0
-                mad r0.xyz, r3.wzyx, r3.x, r2
-                mul r0.xyz, r0, c4
-                mov oC0, r1
-                mov r0.w, r1.w
-                mov oC1, r0
+                dp3_sat r3.x, v4, r2.yzww
+                dp3 r2.y, r2.yzww, c7
+                add_sat r2.y, r2.y, -c7.w
+                mad r2.xzw, c5.xyyz, r3.x, r2.x
+                mul r2.xzw, r0.w, r2
+                mad oC0.xyz, r2.xzww, r2.y, r0
+                mad r0.xyz, r2.xzww, r2.y, r1
+                mul oC1.xyz, r0, c4
+                mov oC0.w, r1.w
+                mov oC1.w, r1.w
             
-            // approximately 48 instruction slots used (3 texture, 45 arithmetic)
+            // approximately 46 instruction slots used (3 texture, 43 arithmetic)
             };
     }
     pass ShadowMap
@@ -682,20 +705,22 @@ technique TShader
             //   mLight       c4       4
             //
             
-                vs_1_1
+                vs_3_0
                 def c8, 0, 0, 0, 0
                 dcl_position v0
+                dcl_position o0
+                dcl_texcoord o1
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
                 dp4 r0.w, v0, c3
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
                 dp4 r1.z, r0, c6
                 dp4 r1.w, r0, c7
-                mov oPos.zw, r1
-                mov oT0.xy, r1.zwzw
-                mov oT0.zw, c8.x
+                mov o0.zw, r1
+                mov o1.xy, r1.zwzw
+                mov o1.zw, c8.x
             
             // approximately 11 instruction slots used
             };
@@ -704,13 +729,12 @@ technique TShader
             asm {
             //
             // Generated by Microsoft (R) HLSL Shader Compiler 9.29.952.3111
-                ps_2_0
-                dcl t0.xy
-                rcp r0.w, t0.y
-                mul r0, r0.w, t0.x
-                mov oC0, r0
+                ps_3_0
+                dcl_texcoord v0.xy
+                rcp r0.x, v0.y
+                mul oC0, r0.x, v0.x
             
-            // approximately 3 instruction slots used
+            // approximately 2 instruction slots used
             };
     }
     pass ShadowAlphaMap
@@ -734,22 +758,25 @@ technique TShader
             //   mLight       c4       4
             //
             
-                vs_1_1
+                vs_3_0
                 def c8, 0, 0, 0, 0
                 dcl_position v0
                 dcl_texcoord v1
+                dcl_position o0
+                dcl_texcoord o1.xy
+                dcl_texcoord1 o2
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
                 dp4 r0.w, v0, c3
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
                 dp4 r1.z, r0, c6
                 dp4 r1.w, r0, c7
-                mov oPos.zw, r1
-                mov oT1.xy, r1.zwzw
-                mov oT0.xy, v1
-                mov oT1.zw, c8.x
+                mov o0.zw, r1
+                mov o2.xy, r1.zwzw
+                mov o1.xy, v1
+                mov o2.zw, c8.x
             
             // approximately 12 instruction slots used
             };
@@ -771,14 +798,14 @@ technique TShader
             //   Samp         s0       1
             //
             
-                ps_2_0
-                dcl t0.xy
-                dcl t1.xy
+                ps_3_0
+                dcl_texcoord v0.xy
+                dcl_texcoord1 v1.xy
                 dcl_2d s0
-                texld r0, t0, s0
-                rcp r1.w, t1.y
-                mul r0.xyz, r1.w, t1.x
-                mov oC0, r0
+                rcp r0.x, v1.y
+                mul oC0.xyz, r0.x, v1.x
+                texld r0, v0, s0
+                mov oC0.w, r0.w
             
             // approximately 4 instruction slots used (1 texture, 3 arithmetic)
             };
@@ -806,18 +833,20 @@ technique TShader
             //   vFog         c8       1
             //
             
-                vs_1_1
+                vs_3_0
                 dcl_position v0
+                dcl_position o0
+                dcl_fog o1.x
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
                 dp4 r0.w, v0, c3
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
-                dp4 oPos.z, r0, c6
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
+                dp4 o0.z, r0, c6
                 dp4 r0.x, r0, c7
-                mad oFog, r0.x, c8.y, c8.x
-                mov oPos.w, r0.x
+                mad o1.x, r0.x, c8.y, c8.x
+                mov o0.w, r0.x
             
             // approximately 10 instruction slots used
             };
@@ -845,7 +874,7 @@ technique TShader
             // approximately 1 instruction used
             //
             // Generated by Microsoft (R) HLSL Shader Compiler 9.29.952.3111
-                ps_2_0
+                ps_3_0
                 mov oC0, c0
             
             // approximately 1 instruction slot used
@@ -874,20 +903,23 @@ technique TShader
             //   vFog         c8       1
             //
             
-                vs_1_1
+                vs_3_0
                 dcl_position v0
                 dcl_texcoord v1
+                dcl_position o0
+                dcl_fog o1.x
+                dcl_texcoord o2.xy
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
                 dp4 r0.w, v0, c3
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
-                dp4 oPos.z, r0, c6
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
+                dp4 o0.z, r0, c6
                 dp4 r0.x, r0, c7
-                mad oFog, r0.x, c8.y, c8.x
-                mov oPos.w, r0.x
-                mov oT0.xy, v1
+                mad o1.x, r0.x, c8.y, c8.x
+                mov o0.w, r0.x
+                mov o2.xy, v1
             
             // approximately 11 instruction slots used
             };
@@ -911,14 +943,13 @@ technique TShader
             //   Samp         s0       1
             //
             
-                ps_2_0
-                dcl t0.xy
+                ps_3_0
+                dcl_texcoord v0.xy
                 dcl_2d s0
-                texld r0, t0, s0
-                mul r1, r0, c0
-                mov oC0, r1
+                texld r0, v0, s0
+                mul oC0, r0, c0
             
-            // approximately 3 instruction slots used (1 texture, 2 arithmetic)
+            // approximately 2 instruction slots used (1 texture, 1 arithmetic)
             };
     }
     pass FVF_Tex_Point
@@ -944,20 +975,23 @@ technique TShader
             //   vFog         c8       1
             //
             
-                vs_1_1
+                vs_3_0
                 dcl_position v0
                 dcl_texcoord v1
+                dcl_position o0
+                dcl_fog o1.x
+                dcl_texcoord o2.xy
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
                 dp4 r0.w, v0, c3
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
-                dp4 oPos.z, r0, c6
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
+                dp4 o0.z, r0, c6
                 dp4 r0.x, r0, c7
-                mad oFog, r0.x, c8.y, c8.x
-                mov oPos.w, r0.x
-                mov oT0.xy, v1
+                mad o1.x, r0.x, c8.y, c8.x
+                mov o0.w, r0.x
+                mov o2.xy, v1
             
             // approximately 11 instruction slots used
             };
@@ -981,14 +1015,13 @@ technique TShader
             //   Samp         s0       1
             //
             
-                ps_2_0
-                dcl t0.xy
+                ps_3_0
+                dcl_texcoord v0.xy
                 dcl_2d s0
-                texld r0, t0, s0
-                mul r1, r0, c0
-                mov oC0, r1
+                texld r0, v0, s0
+                mul oC0, r0, c0
             
-            // approximately 3 instruction slots used (1 texture, 2 arithmetic)
+            // approximately 2 instruction slots used (1 texture, 1 arithmetic)
             };
     }
     pass FVF_Tex_One
@@ -1012,18 +1045,20 @@ technique TShader
             //   mVP          c4       4
             //
             
-                vs_1_1
+                vs_3_0
                 dcl_position v0
                 dcl_texcoord v1
+                dcl_position o0
+                dcl_texcoord o1.xy
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
                 dp4 r0.w, v0, c3
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
-                dp4 oPos.z, r0, c6
-                dp4 oPos.w, r0, c7
-                mov oT0.xy, v1
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
+                dp4 o0.z, r0, c6
+                dp4 o0.w, r0, c7
+                mov o1.xy, v1
             
             // approximately 9 instruction slots used
             };
@@ -1049,16 +1084,15 @@ technique TShader
             //   Samp         s0       1
             //
             
-                ps_2_0
-                dcl t0.xy
+                ps_3_0
+                dcl_texcoord v0.xy
                 dcl_2d s0
-                texld r0, t0, s0
-                mul r1, r0, c0
-                mov oC0, r1
-                mul r0, r1, c1
-                mov oC1, r0
+                texld r0, v0, s0
+                mul r0, r0, c0
+                mul oC1, r0, c1
+                mov oC0, r0
             
-            // approximately 5 instruction slots used (1 texture, 4 arithmetic)
+            // approximately 4 instruction slots used (1 texture, 3 arithmetic)
             };
     }
     pass Tone
@@ -1082,18 +1116,20 @@ technique TShader
             //   mVP          c4       4
             //
             
-                vs_1_1
+                vs_3_0
                 dcl_position v0
                 dcl_texcoord v1
+                dcl_position o0
+                dcl_texcoord o1.xy
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
                 dp4 r0.w, v0, c3
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
-                dp4 oPos.z, r0, c6
-                dp4 oPos.w, r0, c7
-                mov oT0.xy, v1
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
+                dp4 o0.z, r0, c6
+                dp4 o0.w, r0, c7
+                mov o1.xy, v1
             
             // approximately 9 instruction slots used
             };
@@ -1138,23 +1174,23 @@ technique TShader
             //   Samp         s0       1
             //
             
-                ps_2_0
+                ps_3_0
                 def c2, 1, 0, 0, 0
-                dcl t0.xy
+                dcl_texcoord v0.xy
                 dcl_2d s0
-                texld r0, t0, s0
-                max r1.w, r0.y, r0.z
-                max r2.w, r0.x, r1.w
-                mul r1.x, r2.w, c0.x
-                mov r2.x, c0.x
-                mad r1.y, r2.x, r2.w, c2.x
+                texld r0, v0, s0
+                max r1.x, r0.y, r0.z
+                max r2.x, r0.x, r1.x
+                mul r1.x, r2.x, c0.x
+                mov r3.x, c0.x
+                mad r1.y, r3.x, r2.x, c2.x
                 rcp r1.y, r1.y
                 mov r2.x, c2.x
                 mad r1.z, r1.x, c1.x, r2.x
                 mul r1.x, r1.z, r1.x
                 mul r1.x, r1.y, r1.x
-                mul r0.xyz, r0, r1.x
-                mov oC0, r0
+                mul oC0.xyz, r0, r1.x
+                mov oC0.w, r0.w
             
             // approximately 13 instruction slots used (1 texture, 12 arithmetic)
             };
@@ -1180,18 +1216,20 @@ technique TShader
             //   mVP          c4       4
             //
             
-                vs_1_1
+                vs_3_0
                 dcl_position v0
                 dcl_texcoord v1
+                dcl_position o0
+                dcl_texcoord o1.xy
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
                 dp4 r0.w, v0, c3
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
-                dp4 oPos.z, r0, c6
-                dp4 oPos.w, r0, c7
-                mov oT0.xy, v1
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
+                dp4 o0.z, r0, c6
+                dp4 o0.w, r0, c7
+                mov o1.xy, v1
             
             // approximately 9 instruction slots used
             };
@@ -1243,46 +1281,43 @@ technique TShader
             //   Samp         s0       1
             //
             
-                ps_2_0
-                dcl t0.xy
+                ps_3_0
+                dcl_texcoord v0.xy
                 dcl_2d s0
-                texld r0, t0, s0
-                add r1.x, t0.x, -c10.x
-                add r1.y, t0.y, -c10.z
-                add r2.xy, t0, -c6
-                add r3.xy, t0, -c7
-                add r4.xy, t0, -c8
-                add r5.xy, t0, -c9
-                add r6.x, t0.x, c10.x
-                add r6.y, t0.y, c10.z
-                add r7.xy, t0, c6
-                add r8.xy, t0, c7
-                add r9.xy, t0, c8
-                add r10.xy, t0, c9
+                add r0.xy, -c10.xzzw, v0
+                texld r0, r0, s0
+                mul r0, r0, c1.x
+                texld r1, v0, s0
+                mad r0, r1, c0.x, r0
+                add r1.xy, -c6, v0
                 texld r1, r1, s0
-                texld r2, r2, s0
-                texld r3, r3, s0
-                texld r4, r4, s0
-                texld r5, r5, s0
-                texld r6, r6, s0
-                texld r7, r7, s0
-                texld r8, r8, s0
-                texld r9, r9, s0
-                texld r10, r10, s0
-                mul r1, r1, c1.x
-                mad r0, r0, c0.x, r1
-                mad r0, r2, c2.x, r0
-                mad r0, r3, c3.x, r0
-                mad r0, r4, c4.x, r0
-                mad r0, r5, c5.x, r0
-                mad r0, r6, c1.x, r0
-                mad r0, r7, c2.x, r0
-                mad r0, r8, c3.x, r0
-                mad r0, r9, c4.x, r0
-                mad r0, r10, c5.x, r0
-                mov oC0, r0
+                mad r0, r1, c2.x, r0
+                add r1.xy, -c7, v0
+                texld r1, r1, s0
+                mad r0, r1, c3.x, r0
+                add r1.xy, -c8, v0
+                texld r1, r1, s0
+                mad r0, r1, c4.x, r0
+                add r1.xy, -c9, v0
+                texld r1, r1, s0
+                mad r0, r1, c5.x, r0
+                add r1.xy, c10.xzzw, v0
+                texld r1, r1, s0
+                mad r0, r1, c1.x, r0
+                add r1.xy, c6, v0
+                texld r1, r1, s0
+                mad r0, r1, c2.x, r0
+                add r1.xy, c7, v0
+                texld r1, r1, s0
+                mad r0, r1, c3.x, r0
+                add r1.xy, c8, v0
+                texld r1, r1, s0
+                mad r0, r1, c4.x, r0
+                add r1.xy, c9, v0
+                texld r1, r1, s0
+                mad oC0, r1, c5.x, r0
             
-            // approximately 35 instruction slots used (11 texture, 24 arithmetic)
+            // approximately 32 instruction slots used (11 texture, 21 arithmetic)
             };
     }
     pass GaussY
@@ -1306,18 +1341,20 @@ technique TShader
             //   mVP          c4       4
             //
             
-                vs_1_1
+                vs_3_0
                 dcl_position v0
                 dcl_texcoord v1
+                dcl_position o0
+                dcl_texcoord o1.xy
                 dp4 r0.x, v0, c0
                 dp4 r0.y, v0, c1
                 dp4 r0.z, v0, c2
                 dp4 r0.w, v0, c3
-                dp4 oPos.x, r0, c4
-                dp4 oPos.y, r0, c5
-                dp4 oPos.z, r0, c6
-                dp4 oPos.w, r0, c7
-                mov oT0.xy, v1
+                dp4 o0.x, r0, c4
+                dp4 o0.y, r0, c5
+                dp4 o0.z, r0, c6
+                dp4 o0.w, r0, c7
+                mov o1.xy, v1
             
             // approximately 9 instruction slots used
             };
@@ -1369,46 +1406,43 @@ technique TShader
             //   Samp         s0       1
             //
             
-                ps_2_0
-                dcl t0.xy
+                ps_3_0
+                dcl_texcoord v0.xy
                 dcl_2d s0
-                texld r0, t0, s0
-                add r1.x, t0.x, -c10.z
-                add r1.y, t0.y, -c10.y
-                add r2.xy, t0, -c6
-                add r3.xy, t0, -c7
-                add r4.xy, t0, -c8
-                add r5.xy, t0, -c9
-                add r6.x, t0.x, c10.z
-                add r6.y, t0.y, c10.y
-                add r7.xy, t0, c6
-                add r8.xy, t0, c7
-                add r9.xy, t0, c8
-                add r10.xy, t0, c9
+                add r0.xy, -c10.zyzw, v0
+                texld r0, r0, s0
+                mul r0, r0, c1.x
+                texld r1, v0, s0
+                mad r0, r1, c0.x, r0
+                add r1.xy, -c6, v0
                 texld r1, r1, s0
-                texld r2, r2, s0
-                texld r3, r3, s0
-                texld r4, r4, s0
-                texld r5, r5, s0
-                texld r6, r6, s0
-                texld r7, r7, s0
-                texld r8, r8, s0
-                texld r9, r9, s0
-                texld r10, r10, s0
-                mul r1, r1, c1.x
-                mad r0, r0, c0.x, r1
-                mad r0, r2, c2.x, r0
-                mad r0, r3, c3.x, r0
-                mad r0, r4, c4.x, r0
-                mad r0, r5, c5.x, r0
-                mad r0, r6, c1.x, r0
-                mad r0, r7, c2.x, r0
-                mad r0, r8, c3.x, r0
-                mad r0, r9, c4.x, r0
-                mad r0, r10, c5.x, r0
-                mov oC0, r0
+                mad r0, r1, c2.x, r0
+                add r1.xy, -c7, v0
+                texld r1, r1, s0
+                mad r0, r1, c3.x, r0
+                add r1.xy, -c8, v0
+                texld r1, r1, s0
+                mad r0, r1, c4.x, r0
+                add r1.xy, -c9, v0
+                texld r1, r1, s0
+                mad r0, r1, c5.x, r0
+                add r1.xy, c10.zyzw, v0
+                texld r1, r1, s0
+                mad r0, r1, c1.x, r0
+                add r1.xy, c6, v0
+                texld r1, r1, s0
+                mad r0, r1, c2.x, r0
+                add r1.xy, c7, v0
+                texld r1, r1, s0
+                mad r0, r1, c3.x, r0
+                add r1.xy, c8, v0
+                texld r1, r1, s0
+                mad r0, r1, c4.x, r0
+                add r1.xy, c9, v0
+                texld r1, r1, s0
+                mad oC0, r1, c5.x, r0
             
-            // approximately 35 instruction slots used (11 texture, 24 arithmetic)
+            // approximately 32 instruction slots used (11 texture, 21 arithmetic)
             };
     }
 }

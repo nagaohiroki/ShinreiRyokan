@@ -177,8 +177,8 @@ Mesh_PS_OUTPUT Mesh_PS(Mesh_VS_OUTPUT In)
 #define defPass_Mesh\
 pass Mesh\
 {\
-	VertexShader	= compile vs_1_1 Mesh_VS();\
-	PixelShader	= compile ps_2_0 Mesh_PS();\
+	VertexShader	= compile vs_3_0 Mesh_VS();\
+	PixelShader	= compile ps_3_0 Mesh_PS();\
 	AlphaBlendEnable = TRUE;\
 	SrcBlend = SRCALPHA;\
 	DestBlend = INVSRCALPHA;\
@@ -295,8 +295,8 @@ Mesh_Tex_PS_OUTPUT Mesh_Tex_PS(Mesh_Tex_VS_OUTPUT In)
 #define defPass_Mesh_Tex\
 pass Mesh_Tex\
 {\
-	VertexShader	= compile vs_1_1 Mesh_Tex_VS();\
-	PixelShader	= compile ps_2_0 Mesh_Tex_PS();\
+	VertexShader	= compile vs_3_0 Mesh_Tex_VS();\
+	PixelShader	= compile ps_3_0 Mesh_Tex_PS();\
 	AlphaBlendEnable = TRUE;\
 	SrcBlend = SRCALPHA;\
 	DestBlend = INVSRCALPHA;\
@@ -413,8 +413,8 @@ Mesh_AlphaTex_PS_OUTPUT Mesh_AlphaTex_PS(Mesh_AlphaTex_VS_OUTPUT In)
 #define defPass_Mesh_AlphaTex\
 pass Mesh_AlphaTex\
 {\
-	VertexShader	= compile vs_1_1 Mesh_AlphaTex_VS();\
-	PixelShader	= compile ps_2_0 Mesh_AlphaTex_PS();\
+	VertexShader	= compile vs_3_0 Mesh_AlphaTex_VS();\
+	PixelShader	= compile ps_3_0 Mesh_AlphaTex_PS();\
 	AlphaBlendEnable = TRUE;\
 	SrcBlend = SRCALPHA;\
 	DestBlend = INVSRCALPHA;\
@@ -534,8 +534,8 @@ Mesh_Bump_PS_OUTPUT Mesh_Bump_PS(Mesh_Bump_VS_OUTPUT In)
 #define defPass_Mesh_Bump\
 pass Mesh_Bump\
 {\
-	VertexShader	= compile vs_1_1 Mesh_Bump_VS();\
-	PixelShader	= compile ps_2_0 Mesh_Bump_PS();\
+	VertexShader	= compile vs_3_0 Mesh_Bump_VS();\
+	PixelShader	= compile ps_3_0 Mesh_Bump_PS();\
 	AlphaBlendEnable = TRUE;\
 	SrcBlend = SRCALPHA;\
 	DestBlend = INVSRCALPHA;\
@@ -591,8 +591,8 @@ ShadowMap_PS_OUTPUT ShadowMap_PS(ShadowMap_VS_OUTPUT In)
 #define defPass_ShadowMap\
 pass ShadowMap\
 {\
-	VertexShader	= compile vs_1_1 ShadowMap_VS();\
-	PixelShader	= compile ps_2_0 ShadowMap_PS();\
+	VertexShader	= compile vs_3_0 ShadowMap_VS();\
+	PixelShader	= compile ps_3_0 ShadowMap_PS();\
 	ZWRITEENABLE = TRUE;\
 	CULLMODE = CCW;\
 }\
@@ -640,8 +640,8 @@ ShadowAlphaMap_PS_OUTPUT ShadowAlphaMap_PS(ShadowAlphaMap_VS_OUTPUT In)
 #define defPass_ShadowAlphaMap\
 pass ShadowAlphaMap\
 {\
-	VertexShader	= compile vs_1_1 ShadowAlphaMap_VS();\
-	PixelShader	= compile ps_2_0 ShadowAlphaMap_PS();\
+	VertexShader	= compile vs_3_0 ShadowAlphaMap_VS();\
+	PixelShader	= compile ps_3_0 ShadowAlphaMap_PS();\
 	AlphaBlendEnable = TRUE;\
 	SrcBlend = SRCALPHA;\
 	DestBlend = INVSRCALPHA;\
@@ -692,8 +692,8 @@ FVF_PS_OUTPUT FVF_PS(FVF_VS_OUTPUT In)
 #define defPass_FVF\
 pass FVF\
 {\
-	VertexShader	= compile vs_1_1 FVF_VS();\
-	PixelShader	= compile ps_2_0 FVF_PS();\
+	VertexShader	= compile vs_3_0 FVF_VS();\
+	PixelShader	= compile ps_3_0 FVF_PS();\
 	AlphaBlendEnable = TRUE;\
 	SrcBlend = SRCALPHA;\
 	DestBlend = INVSRCALPHA;\
@@ -749,8 +749,8 @@ FVF_Tex_PS_OUTPUT FVF_Tex_PS(FVF_Tex_VS_OUTPUT In)
 #define defPass_FVF_Tex\
 pass FVF_Tex\
 {\
-	VertexShader	= compile vs_1_1 FVF_Tex_VS();\
-	PixelShader	= compile ps_2_0 FVF_Tex_PS();\
+	VertexShader	= compile vs_3_0 FVF_Tex_VS();\
+	PixelShader	= compile ps_3_0 FVF_Tex_PS();\
 	AlphaBlendEnable = TRUE;\
 	SrcBlend = SRCALPHA;\
 	DestBlend = INVSRCALPHA;\
@@ -806,8 +806,8 @@ FVF_Tex_Point_PS_OUTPUT FVF_Tex_Point_PS(FVF_Tex_Point_VS_OUTPUT In)
 #define defPass_FVF_Tex_Point\
 pass FVF_Tex_Point\
 {\
-	VertexShader	= compile vs_1_1 FVF_Tex_Point_VS();\
-	PixelShader	= compile ps_2_0 FVF_Tex_Point_PS();\
+	VertexShader	= compile vs_3_0 FVF_Tex_Point_VS();\
+	PixelShader	= compile ps_3_0 FVF_Tex_Point_PS();\
 	AlphaBlendEnable = TRUE;\
 	SrcBlend = SRCALPHA;\
 	DestBlend = INVSRCALPHA;\
@@ -861,8 +861,8 @@ FVF_Tex_One_PS_OUTPUT FVF_Tex_One_PS(FVF_Tex_One_VS_OUTPUT In)
 #define defPass_FVF_Tex_One\
 pass FVF_Tex_One\
 {\
-	VertexShader	= compile vs_1_1 FVF_Tex_One_VS();\
-	PixelShader	= compile ps_2_0 FVF_Tex_One_PS();\
+	VertexShader	= compile vs_3_0 FVF_Tex_One_VS();\
+	PixelShader	= compile ps_3_0 FVF_Tex_One_PS();\
 	AlphaBlendEnable = TRUE;\
 	SrcBlend =SRCALPHA;\
 	DestBlend =ONE;\
@@ -922,8 +922,8 @@ Tone_PS_OUTPUT Tone_PS(Tone_VS_OUTPUT In)
 #define defPass_Tone\
 pass Tone\
 {\
-	VertexShader	= compile vs_1_1 Tone_VS();\
-	PixelShader	= compile ps_2_0 Tone_PS();\
+	VertexShader	= compile vs_3_0 Tone_VS();\
+	PixelShader	= compile ps_3_0 Tone_PS();\
 	AddressU[0] = Clamp;\
 	AddressV[0] = Clamp;\
 	MinFilter[0] = LINEAR;\
@@ -989,8 +989,8 @@ GaussX_PS_OUTPUT GaussX_PS(GaussX_VS_OUTPUT In)
 #define defPass_GaussX\
 pass GaussX\
 {\
-	VertexShader	= compile vs_1_1 GaussX_VS();\
-	PixelShader	= compile ps_2_0 GaussX_PS();\
+	VertexShader	= compile vs_3_0 GaussX_VS();\
+	PixelShader	= compile ps_3_0 GaussX_PS();\
 	AddressU[0] = Clamp;\
 	AddressV[0] = Clamp;\
 	MinFilter[0] = LINEAR;\
@@ -1056,8 +1056,8 @@ GaussY_PS_OUTPUT GaussY_PS(GaussY_VS_OUTPUT In)
 #define defPass_GaussY\
 pass GaussY\
 {\
-	VertexShader	= compile vs_1_1 GaussY_VS();\
-	PixelShader	= compile ps_2_0 GaussY_PS();\
+	VertexShader	= compile vs_3_0 GaussY_VS();\
+	PixelShader	= compile ps_3_0 GaussY_PS();\
 	AddressU[0] = Clamp;\
 	AddressV[0] = Clamp;\
 	MinFilter[0] = LINEAR;\
