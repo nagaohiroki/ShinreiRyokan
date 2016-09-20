@@ -272,17 +272,17 @@ VOID Scene::Main_draw()
 	//輝度バッファをぼかす
 	//横
 	ML->Sf.Begin(SU_GAUSSX,ML->D);
-	Back.draw(ML,ML->Sf.Retex(SU_HDR),fx::GaussX);
+	Back.draw(ML,ML->Sf.Retex(SU_GAUSSX),fx::GaussX);
 	//縦
 	ML->Sf.Begin(SU_GAUSSY,ML->D);
-	Back.draw(ML,ML->Sf.Retex(SU_GAUSSX),fx::GaussY);
+	Back.draw(ML,ML->Sf.Retex(SU_GAUSSY),fx::GaussY);
 
 	//サーフェイスを終了
 	ML->Sf.End(ML->D);
 	//マルチレンダリングサーフェイスを終了================================================================
 	Back.draw(ML,ML->Sf.Retex(SU_TONE),fx::Tone);
 	//ライトブルーム
-	Back.draw(ML,ML->Sf.Retex(SU_GAUSSY),fx::FVF_Tex_One);
+	Back.draw(ML,ML->Sf.Retex(SU_HDR),fx::FVF_Tex_One);
 	//UIを表示
 	UI_draw();
 
